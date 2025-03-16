@@ -1,0 +1,36 @@
+package com.isacode.application.service;
+
+import com.isacode.domain.model.Usuario;
+import com.isacode.domain.ports.in.IUsuarioUseCase;
+
+import java.util.List;
+import java.util.Optional;
+
+public class UsuarioService implements IUsuarioUseCase {
+
+    private final IUsuarioUseCase usuarioUseCase;
+
+    public UsuarioService(IUsuarioUseCase usuarioUseCase) {
+        this.usuarioUseCase = usuarioUseCase;
+    }
+
+    @Override
+    public Usuario crearUsuario(Usuario usuario) {
+        return usuarioUseCase.crearUsuario(usuario);
+    }
+
+    @Override
+    public Optional<Usuario> getUsuario(Long id) {
+        return usuarioUseCase.getUsuario(id);
+    }
+
+    @Override
+    public Optional<Usuario> actualizar(Long id, Usuario usuario) {
+        return usuarioUseCase.actualizar(id, usuario);
+    }
+
+    @Override
+    public void eliminar(Long id) {
+        usuarioUseCase.eliminar(id);
+    }
+}
