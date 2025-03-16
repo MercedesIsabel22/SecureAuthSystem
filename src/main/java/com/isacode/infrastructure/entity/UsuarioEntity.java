@@ -17,7 +17,7 @@ public class UsuarioEntity {
     private String nombreUsuario;
     private String contrasenia;
     private String correoElectronico;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private PersonaEntity persona;
 
     public UsuarioEntity() {
