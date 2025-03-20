@@ -5,9 +5,7 @@ import com.isacode.domain.ports.out.IPersonaRepositoryPort;
 import com.isacode.infrastructure.entity.PersonaEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Component
 public class PersonaJpaRepositoryAdapter implements IPersonaRepositoryPort {
@@ -41,7 +39,13 @@ public class PersonaJpaRepositoryAdapter implements IPersonaRepositoryPort {
     }
 
     @Override
-    public void delete(Long id) {
-        personaJpaRepository.deleteById(id);
+    public boolean deleteById(Long id) {
+        if (personaJpaRepository.existsById(id)) {
+            personaJpaRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
+
+
 }

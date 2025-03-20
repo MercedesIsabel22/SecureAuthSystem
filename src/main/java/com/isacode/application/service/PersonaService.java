@@ -25,12 +25,12 @@ public class PersonaService implements IPersonaUseCase {
     }
 
     @Override
-    public Optional<Persona> actualizar(Long id, Persona persona) {
-        return personaUseCase.actualizar(id, persona);
+    public Optional<Persona> updatePersona(Long id, Persona persona) {
+        return personaUseCase.updatePersona(id, persona);
     }
 
     @Override
-    public void eliminar(Long id) {
-        personaUseCase.eliminar(id);
+    public boolean deletePersona(Long id) {
+       return personaUseCase.deletePersona(id);
     }
 }

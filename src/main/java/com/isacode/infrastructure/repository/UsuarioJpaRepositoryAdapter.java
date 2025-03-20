@@ -41,7 +41,10 @@ public class UsuarioJpaRepositoryAdapter implements IUsuarioRepositoryPort {
     }
 
     @Override
-    public void delete(Long id) {
-        usuarioJpaRepository.deleteById(id);
+    public boolean deleteById(Long id) {
+       if (usuarioJpaRepository.existsById(id)){
+            usuarioJpaRepository.deleteById(id);
+       }
+       return false;
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 
 @RestController
@@ -34,15 +34,19 @@ public class PersonaController {
 
     @PutMapping("/{personaId}")
     public ResponseEntity<Persona> updatePersona(@PathVariable Long personaId, @RequestBody Persona persona) {
-        return personaService.actualizar(personaId, persona)
+        return personaService.updatePersona(personaId, persona)
                 .map(u -> new ResponseEntity<>(u, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("/{personaId}")
-    public ResponseEntity<String> deletePersona(@PathVariable Long personaId) {
-        personaService.eliminar(personaId);
-        return new ResponseEntity<>("Persona eliminada", HttpStatus.OK);
+    public ResponseEntity<Void> deletePersonaById(@PathVariable Long personaId) {
+        if (personaService.deletePersona(personaId)) {
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        }
     }
 
 }

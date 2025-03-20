@@ -10,6 +10,9 @@ public interface IUsuarioRepositoryPort {
     Usuario save(Usuario usuario);
 
     Optional<Usuario> findById(Long id);
+
     Optional<Usuario> update(Long id, Usuario usuario);
-    void delete(Long id);
+
+    boolean deleteById(Long id);
+
 }

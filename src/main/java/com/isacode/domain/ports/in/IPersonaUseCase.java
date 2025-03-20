@@ -11,7 +11,7 @@ public interface IPersonaUseCase {
 
     Optional<Persona> getPersona(Long id);
 
-    Optional<Persona> actualizar(Long id,Persona persona);
+    Optional<Persona> updatePersona(Long id,Persona persona);
 
-    void eliminar(Long id);
+    boolean deletePersona(Long id);
 }

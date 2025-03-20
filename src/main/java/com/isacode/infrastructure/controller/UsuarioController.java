@@ -30,14 +30,17 @@ public class UsuarioController {
 
     @PutMapping("/{usuarioId}")
     public ResponseEntity<Usuario> updateUsuario(@PathVariable Long usuarioId, @RequestBody Usuario usuario) {
-        return usuarioService.actualizar(usuarioId, usuario)
+        return usuarioService.updateUsuario(usuarioId, usuario)
                 .map(p -> new ResponseEntity<>(p, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("/{usuarioId}")
-    public ResponseEntity<String> deleteUsuario(@PathVariable Long usuarioId) {
-        usuarioService.eliminar(usuarioId);
-        return new ResponseEntity<>("Usuario eliminado", HttpStatus.OK);
+    public ResponseEntity<Void> deleteUsuarioById(@PathVariable Long usuarioId) {
+        if(usuarioService.deleteUsuario(usuarioId)) {
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }

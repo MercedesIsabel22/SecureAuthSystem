@@ -12,7 +12,7 @@ public interface IUsuarioUseCase {
 
     Optional<Usuario> getUsuario(Long id);
 
-    Optional<Usuario> actualizar(Long id, Usuario usuario);
+    Optional<Usuario> updateUsuario(Long id, Usuario usuario);
 
-    void eliminar(Long id);
+    boolean deleteUsuario(Long id);
 }

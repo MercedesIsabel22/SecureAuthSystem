@@ -25,12 +25,12 @@ public class UsuarioUseCaseImpl implements IUsuarioUseCase {
     }
 
     @Override
-    public Optional<Usuario> actualizar(Long id, Usuario usuario) {
+    public Optional<Usuario> updateUsuario(Long id, Usuario usuario) {
         return usuarioRepositoryPort.update(id, usuario);
     }
 
     @Override
-    public void eliminar(Long id) {
-        usuarioRepositoryPort.delete(id);
+    public boolean deleteUsuario(Long id) {
+      return usuarioRepositoryPort.deleteById(id);
     }
 }

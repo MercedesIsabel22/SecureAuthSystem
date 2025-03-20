@@ -25,12 +25,12 @@ public class UsuarioService implements IUsuarioUseCase {
     }
 
     @Override
-    public Optional<Usuario> actualizar(Long id, Usuario usuario) {
-        return usuarioUseCase.actualizar(id, usuario);
+    public Optional<Usuario> updateUsuario(Long id, Usuario usuario) {
+        return usuarioUseCase.updateUsuario(id, usuario);
     }
 
     @Override
-    public void eliminar(Long id) {
-        usuarioUseCase.eliminar(id);
+    public boolean deleteUsuario(Long id) {
+        return usuarioUseCase.deleteUsuario(id);
     }
 }
