@@ -67,28 +67,31 @@ class PersonaJpaRepositoryAdapterTest {
 
     @Test
     void findById_IsEmpty() {
+        // Arrange
         Long id = 1L;
-
         when(personaJpaRepository.findById(id)).thenReturn(Optional.empty());
+
+        //Act
         Optional<Persona> optionalPersona = personaJpaRepositoryAdapter.findById(id);
+
+        //Assert
         assertTrue(optionalPersona.isEmpty());
 
     }
 
     @Test
-    void deleteById_Exitoso()
-        // Simulación de un ID existente
+    void deleteById_Exitoso() {
+        //Arrange
         Long id = 1L;
-
-        // Simulación del comportamiento del repositorio
         when(personaJpaRepository.existsById(id)).thenReturn(true);
 
-        // Ejecutar el método
+        // Act
         boolean deleted = personaJpaRepositoryAdapter.deleteById(id);
 
-        // Verificaciones
-        assertTrue(deleted); // Debe ser true porque la persona existe y se elimina
+        // Assert
+        assertTrue(deleted);
     }
+
 
 
 }
