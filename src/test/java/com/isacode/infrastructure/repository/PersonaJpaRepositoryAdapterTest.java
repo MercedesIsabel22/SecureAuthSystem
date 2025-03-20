@@ -76,7 +76,7 @@ class PersonaJpaRepositoryAdapterTest {
     }
 
     @Test
-    void deleteById_Exitoso() {
+    void deleteById_Exitoso()
         // Simulación de un ID existente
         Long id = 1L;
 
