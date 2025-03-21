@@ -32,10 +32,10 @@ public class UsuarioEntity {
     }
 
     public static UsuarioEntity fromDomainModel(Usuario usuario) {
-        return new UsuarioEntity(usuario.getId(), usuario.getNombreUsuario(), usuario.getContrasenia(), usuario.getCorreoElectronico(), usuario.getPersona());
+        return new UsuarioEntity(usuario.getId(), usuario.getNombreUsuario(), usuario.getContrasenia(), usuario.getCorreoElectronico(), PersonaEntity.fromDomainModel(usuario.getPersona()));
     }
 
     public Usuario toDomainModel() {
-        return new Usuario(id, nombreUsuario, contrasenia, correoElectronico, persona);
+        return new Usuario(id, nombreUsuario, contrasenia, correoElectronico, persona.toDomainModel());
     }
 }

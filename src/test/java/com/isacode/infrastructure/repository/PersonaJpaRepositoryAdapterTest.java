@@ -2,7 +2,7 @@ package com.isacode.infrastructure.repository;
 
 import com.isacode.domain.model.Persona;
 import com.isacode.infrastructure.entity.PersonaEntity;
-import org.checkerframework.checker.nullness.Opt;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -45,7 +45,7 @@ class PersonaJpaRepositoryAdapterTest {
     }
 
     @Test
-    void testUpdateExitoso() {
+    void UpdateExitoso() {
         Long id = 1L;
         Persona personaActualizada = new Persona(id, "NuevoNombre", "NuevoApellido", new Date(), "Femenino");
         when(personaJpaRepository.existsById(id)).thenReturn(true);
@@ -66,6 +66,20 @@ class PersonaJpaRepositoryAdapterTest {
     }
 
     @Test
+    void update_shouldReturnEmptyOptionalIfNotExist(){
+        // Arrange
+        Long id = 1L;
+        Persona updatePersona = new Persona(1L, "Isa", "Barto", new Date(), "Femenino");
+        when(personaJpaRepository.existsById(id)).thenReturn(false);
+
+        // Act
+        Optional<Persona> optionalUpdatePersona = personaJpaRepositoryAdapter.update(id, updatePersona);
+
+        // Assert
+        assertTrue(optionalUpdatePersona.isEmpty());
+    }
+
+    @Test
     void findById_IsEmpty() {
         // Arrange
         Long id = 1L;
@@ -80,7 +94,7 @@ class PersonaJpaRepositoryAdapterTest {
     }
 
     @Test
-    void deleteById_Exitoso() {
+    void deleteById_shouldDeletePersonaIfExist() {
         //Arrange
         Long id = 1L;
         when(personaJpaRepository.existsById(id)).thenReturn(true);
@@ -92,6 +106,17 @@ class PersonaJpaRepositoryAdapterTest {
         assertTrue(deleted);
     }
 
+    @Test
+    void deleteById_shouldReturnFalseIfNotExist() {
+        // Arrange
+        Long id = 1L;
+        when(personaJpaRepository.existsById(id)).thenReturn(false);
 
+        // Act
+        boolean deleted = personaJpaRepositoryAdapter.deleteById(id);
+
+        // Assert
+        assertFalse(deleted);
+    }
 
 }
