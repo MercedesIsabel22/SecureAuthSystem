@@ -23,6 +23,8 @@ public class PersonaEntity {
     private String apellidos;
     private Date fechaNacimiento;
     private String genero;
+    @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL)
+    private UsuarioEntity usuarioEntity;
 
     public PersonaEntity() {
     }

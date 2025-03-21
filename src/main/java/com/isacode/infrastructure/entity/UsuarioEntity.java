@@ -17,7 +17,8 @@ public class UsuarioEntity {
     private String nombreUsuario;
     private String contrasenia;
     private String correoElectronico;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "persona_id", referencedColumnName = "id")
     private PersonaEntity persona;
 
     public UsuarioEntity() {
