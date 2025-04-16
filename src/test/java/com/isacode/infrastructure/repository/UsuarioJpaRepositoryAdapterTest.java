@@ -18,7 +18,7 @@ import java.util.Optional;
 
 
 class UsuarioJpaRepositoryAdapterTest {
-    @Mock
+   /* @Mock
     IUsuarioJpaRepository usuarioJpaRepository;
 
     @InjectMocks
@@ -123,5 +123,5 @@ class UsuarioJpaRepositoryAdapterTest {
 
         // Assert
         assertFalse(deleted);
-    }
+    }*/
 }

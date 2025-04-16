@@ -4,6 +4,7 @@ import com.isacode.domain.model.Usuario;
 import com.isacode.domain.ports.in.IUsuarioUseCase;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class UsuarioService implements IUsuarioUseCase {
@@ -32,5 +33,10 @@ public class UsuarioService implements IUsuarioUseCase {
     @Override
     public boolean deleteUsuario(Long id) {
         return usuarioUseCase.deleteUsuario(id);
+    }
+
+    @Override
+    public String loginWithUser(Map<String, String> requestMap) {
+        return usuarioUseCase.loginWithUser(requestMap);
     }
 }

@@ -5,6 +5,7 @@ import com.isacode.domain.ports.in.IUsuarioUseCase;
 import com.isacode.domain.ports.out.IUsuarioRepositoryPort;
 
 
+import java.util.Map;
 import java.util.Optional;
 
 public class UsuarioUseCaseImpl implements IUsuarioUseCase {
@@ -32,5 +33,10 @@ public class UsuarioUseCaseImpl implements IUsuarioUseCase {
     @Override
     public boolean deleteUsuario(Long id) {
       return usuarioRepositoryPort.deleteById(id);
+    }
+
+    @Override
+    public String loginWithUser(Map<String, String> requestMap) {
+        return usuarioRepositoryPort.loginWithUser(requestMap);
     }
 }

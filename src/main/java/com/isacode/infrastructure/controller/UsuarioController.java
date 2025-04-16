@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("api/usuarios")
 public class UsuarioController {
@@ -42,5 +44,10 @@ public class UsuarioController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PostMapping("/login")
+    public String loginWithUser(@RequestBody(required = true) Map<String, String> requestMap){
+        return usuarioService.loginWithUser(requestMap);
     }
 }
