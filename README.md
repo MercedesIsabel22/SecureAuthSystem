@@ -32,4 +32,4 @@ Con la implementación de **JWT**, se asegura una autenticación sin estado, opt
 
 1. Clona este repositorio en tu máquina local:
    ```bash
-   git clone https://github.com/tu_usuario/SecureAuthSystem.git
+   git clone https://github.com/MercedesIsabel22/SecureAuthSystem.git
